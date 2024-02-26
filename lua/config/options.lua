@@ -4,4 +4,6 @@
 
 -- Disable perl provider
 vim.g.loaded_perl_provider = 0
+
+-- Show and customize the statusline
 vim.opt.winbar = "%=%m %f"
