@@ -20,7 +20,6 @@ require("lazy").setup({
     { import = "lazyvim.plugins.extras.ui.mini-animate" },
     { import = "lazyvim.plugins.extras.ui.alpha" },
     { import = "lazyvim.plugins.extras.linting.eslint" },
-    { import = "lazyvim.plugins.extras.formatting.prettier" },
     -- import/override with your plugins
     { import = "plugins" },
   },
@@ -51,15 +50,3 @@ require("lazy").setup({
     },
   },
 })
-
--- Fix clang warnings
-local cmp_nvim_lsp = require "cmp_nvim_lsp"
-
-require("lspconfig").clangd.setup {
-  on_attach = on_attach,
-  capabilities = cmp_nvim_lsp.default_capabilities(),
-  cmd = {
-    "clangd",
-    "--offset-encoding=utf-16",
-  },
-}
