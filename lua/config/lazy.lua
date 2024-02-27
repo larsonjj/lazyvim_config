@@ -50,3 +50,8 @@ require("lazy").setup({
     },
   },
 })
+
+-- vim.print('Plugins')
+-- for _, plug in ipairs(require('lazy').plugins()) do
+--   vim.print(plug[1])
+-- end
