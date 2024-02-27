@@ -8,11 +8,11 @@ if vim.fn.glob('game.project') ~= '' then
         end,
     })
 
-    -- Enable Proto LSP for Defold resource filetypes
+    -- Enable Go LSP for Defold resource filetypes
     vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
         pattern = { "*.tilemap", "*.tilesource", "*.atlas", "*.collection", "*.input_binding" },
         callback = function()
-            vim.opt.filetype = "proto"
+            vim.opt.filetype = "go"
         end,
     })
 
@@ -40,26 +40,6 @@ if vim.fn.glob('game.project') ~= '' then
                 gopls = {
                     filetypes = { "gomod", "gowork", "gotmpl" },
                     root_dir = require("lspconfig.util").root_pattern("go.mod", "go.work", ".git", "game.project")
-                },
-                -- Disable clangd LSP for proto files
-                clangd = {
-                    capabilities = {
-                        textDocument = {
-                            completion = {
-                                editsNearCursor = true,
-                            },
-                        },
-                        offsetEncoding = { 'utf-8', 'utf-16' },
-                    },
-                    filetypes = { "c", "cpp", "objc", "objcpp", "cuda" },
-                    root_dir = require("lspconfig.util").root_pattern(".clangd",
-                        ".clang-tidy",
-                        ".clang-format",
-                        "compile_commands.json",
-                        "compile_flags.txt",
-                        "configure.ac",
-                        ".git",
-                        "game.project")
                 },
             },
         },
